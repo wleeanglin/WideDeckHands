@@ -178,14 +178,16 @@ function threeKind(stream) {
                 for(let l = 0; l < suits.length; l++) {
                     for(let m = k + 1; m < ranks.length; m++) {
                         for(let n = 0; n < suits.length; n++) {
-                            handRank++; 
-                            const threeK = ranks[i] + threeTuples[j][0] +
-                                ranks[i] + threeTuples[j][1] +
-                                ranks[i] + threeTuples[j][2] +
-                                ranks[k] + suits[m] +
-                                ranks[l] + suits[n];
-                                stream.write(threeK + '\t\t' + handRank + '\t\t' + 'Three ' + rankNames[i] + 's' + '\n');
-                        }
+                            if(k != i && m != i) {
+                                handRank++; 
+                                const threeK = ranks[i] + threeTuples[j][0] +
+                                    ranks[i] + threeTuples[j][1] +
+                                    ranks[i] + threeTuples[j][2] +
+                                    ranks[k] + suits[l] +
+                                    ranks[m] + suits[n];
+                                    stream.write(threeK + '\t\t' + handRank + '\t\t' + 'Three ' + rankNames[i] + 's' + '\n');    
+                            }
+                         }
                     }
                 }
             }
