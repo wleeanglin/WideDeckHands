@@ -57,15 +57,15 @@ function fiveOfAKind() {
 }
 
 function fiveFlush(stream) {
-    for(let i = 0; i < ranks.length - 4; i++) {
-        for(let j = i + 1; j < ranks.length - 3; j++) {
-            for(let k = j + 1; k < ranks.length - 2; k++) {
-                for(let l = k + 1; l < ranks.length - 1; l++) {
-                    for(let m = l + 1; m < ranks.length; m++) {
-                        const flushTemplate = [ranks[i], ranks[j], ranks[k], ranks[l], ranks[m]];
-                        //Special case A9876
-                        if (!(straights.includes(flushTemplate.join('')) || straights.includes(flushTemplate.join('').substring(1) + ranks[i]))) {
-                            for(let n = 0; n < suits.length; n++) {
+    for(let n = 0; n < suits.length; n++) {
+        for(let i = 0; i < ranks.length - 4; i++) {
+            for(let j = i + 1; j < ranks.length - 3; j++) {
+                for(let k = j + 1; k < ranks.length - 2; k++) {
+                    for(let l = k + 1; l < ranks.length - 1; l++) {
+                        for(let m = l + 1; m < ranks.length; m++) {
+                            const flushTemplate = [ranks[i], ranks[j], ranks[k], ranks[l], ranks[m]];
+                            //Special case A9876
+                            if (!(straights.includes(flushTemplate.join('')) || straights.includes(flushTemplate.join('').substring(1) + ranks[i]))) {
                                 handRank++; 
                                 let flush = '';
                                 for(let o = 0; o < flushTemplate.length; o++){
@@ -126,13 +126,11 @@ function fullHouse(stream) {
 }
 
 function fourFlush(stream) {
-    for(let i = 0; i < ranks.length - 3; i++) {
-        for(let j = i + 1; j < ranks.length - 2; j++) {
-            for(let k = j + 1; k < ranks.length - 1; k++) {
-                for(let l = k + 1; l < ranks.length; l++) {
-                    //Suits trump kicker
-                    for(let m = 0; m < suits.length; m++) {
-                        //After suit picked cycle through ranks
+    for(let m = 0; m < suits.length; m++) {
+        for(let i = 0; i < ranks.length - 3; i++) {
+            for(let j = i + 1; j < ranks.length - 2; j++) {
+                for(let k = j + 1; k < ranks.length - 1; k++) {
+                    for(let l = k + 1; l < ranks.length; l++) {
                         for(let n = 0; n < ranks.length; n++) {
                             //Suit of kicker
                             for(let o = 0; o < suits.length; o++) {
